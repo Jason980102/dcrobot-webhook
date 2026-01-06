@@ -1,5 +1,6 @@
 // send_live_log.js
 // 讀 Pingcord 通知頻道，找最後一次「直播通知」的日期，計算台灣時間已經幾天沒開台，然後用 webhook 發訊息。
+console.log("RUN_AT_UTC", new Date().toISOString());
 
 const WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 const BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
