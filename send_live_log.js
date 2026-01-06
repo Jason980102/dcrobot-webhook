@@ -31,9 +31,7 @@ function daysBetweenTW(dateA, dateB) {
   return Math.floor((b - a) / (24 * 60 * 60 * 1000));
 }
 
-// ---- Pingcord live-message detection ----
 function isPingcordLiveMessage(msg) {
-  // We only trust content/embeds text patterns from Pingcord
   const content = (msg.content || "").toLowerCase();
 
   const embedTexts = (msg.embeds || []).map(e => {
@@ -48,16 +46,26 @@ function isPingcordLiveMessage(msg) {
 
   const text = `${content} ${embedTexts}`;
 
+  // ✅ Live patterns (EN + ZH)
   const looksLikeLive =
     text.includes("is now live on youtube") ||
-    text.includes("youtube live");
+    text.includes("youtube live") ||
+    text.includes("is now live") ||
+    text.includes("正在直播") ||
+    text.includes("直播中") ||
+    text.includes("開台") ||
+    text.includes("live on youtube");
 
+  // ❌ Video upload patterns (avoid)
   const looksLikeVideo =
-    text.includes("published a video");
+    text.includes("published a video") ||
+    text.includes("發佈了影片") ||
+    text.includes("發布了影片") ||
+    text.includes("uploaded a video");
 
-  // live true, but exclude video-only messages
   return looksLikeLive && !looksLikeVideo;
 }
+
 
 // ---- Discord API helpers ----
 async function discordGet(url) {
