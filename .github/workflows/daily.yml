@@ -2,7 +2,7 @@ name: Pingcord Live Streak (TW 06:00)
 
 on:
   schedule:
-    - cron: "0 23 * * *"   # 台灣 07:00 = UTC 23:00（前一天）
+    - cron: "0 0 * * *"   # 台灣 07:00 = UTC 23:00（前一天）
   workflow_dispatch: {}
 
 jobs:
