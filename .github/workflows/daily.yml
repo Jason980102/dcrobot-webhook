@@ -1,0 +1,20 @@
+name: Daily Discord Webhook
+
+on:
+  schedule:
+    - cron: '0 13 * * *'  # 每天台灣 21:00（UTC 13:00）
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install requests
+      - name: Run script
+        run: python send_live_log.py
