@@ -134,7 +134,7 @@ async function findLastLiveMessage(maxPages = 15, pageSize = 100) {
     if (days <= 0) {
       await postWebhook(`✅ 【小毛開台監控】\n今天終於開台了（上次直播時間：${lastLiveTW}）`);
     } else {
-      await postWebhook(`😴 【小毛開台監控】\n欸欸欸 麻吉們 這咖今天已經第 ${days} 天沒開台了😡（上次直播時間：${lastLiveTW}）`);
+      await postWebhook(`📺 【小毛開台監控】\n欸欸欸 麻吉們 這咖今天已經${days}天沒開台了😡（上次直播時間：${lastLiveTW}）`);
     }
   } catch (err) {
     console.error(err);
