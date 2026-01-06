@@ -2,17 +2,22 @@ name: Pingcord Live Streak (TW 06:00)
 
 on:
   schedule:
-    # 台灣 06:00 = UTC 22:00（前一天）
-    - cron: "0 22 * * *"
+    - cron: "0 22 * * *"   # 台灣 06:00 = UTC 22:00（前一天）
   workflow_dispatch: {}
 
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - name: Run checker
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           PINGCORD_CHANNEL_ID: ${{ secrets.PINGCORD_CHANNEL_ID }}
-        run: node index.js
+        run: node send_live_log.js
