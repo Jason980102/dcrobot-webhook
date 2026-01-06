@@ -6,7 +6,7 @@ const BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
 const CHANNEL_ID = process.env.PINGCORD_CHANNEL_ID;
 
 if (!WEBHOOK_URL || !BOT_TOKEN || !CHANNEL_ID) {
-  console.error("Missing env vars: DISCORD_WEBHOOK_URL, DISCORD_BOT_TOKEN, PINGCORD_CHANNEL_ID");
+  console.error("Missing env vars. Need DISCORD_WEBHOOK_URL, DISCORD_BOT_TOKEN, PINGCORD_CHANNEL_ID");
   process.exit(1);
 }
 
