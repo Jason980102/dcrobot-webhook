@@ -2,7 +2,7 @@ name: Pingcord Live Streak (TW 06:00)
 
 on:
   schedule:
-    - cron: "0 22 * * *"   # 台灣 06:00 = UTC 22:00（前一天）
+    - cron: "0 22 * * *" # 台灣 06:00 = UTC 22:00 (前一天)
   workflow_dispatch: {}
 
 jobs:
@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
